@@ -65,13 +65,17 @@ class MainActivity : AppCompatActivity() {
 
     fun actualizarProducto(position: Int) {
         with(binding) {
-
-            val id: Int = etID.text.toString().toInt()
-            val nombre: String = etNombreProd.text.toString()
-            val precio: Double = etPrecio.text.toString().toDouble()
-            val prod = Producto(id, nombre, precio)
-            listProd.set(position, prod)
-            rcvLista.adapter?.notifyItemRemoved(position)
+            
+if (etID.text.isNullOrBlank()){
+                return
+            } else{
+                val id: Int = etID.text.toString().toInt()
+                val nombre: String = etNombreProd.text.toString()
+                val precio: Double = etPrecio.text.toString().toDouble()
+                val prod = Producto(id, nombre, precio)
+                listProd.set(position, prod)
+                rcvLista.adapter?.notifyItemRemoved(position)
+            }
 
         }
     }
